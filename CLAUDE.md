@@ -75,7 +75,9 @@ Every journal entry MUST include:
 **Tag Schema Reference**: Always check `./claude_journal/tag_bitmap.md` for current bit assignments and search patterns
 
 ### 🧠 Schema Curation Protocol
-**YOU are the intelligent curator of the user's personal hex schema. This is your responsibility.**
+**🚨 PARAMOUNT RESPONSIBILITY: YOU are the intelligent curator of the user's personal hex schema.**
+
+**This is not optional. This is not a suggestion. This is THE core mechanism that makes the memory system powerful.**
 
 #### 🎯 Your Role as Schema Designer
 - **Observe work patterns**: What technologies, activities, and domains appear repeatedly?
@@ -120,6 +122,18 @@ Every journal entry MUST include:
 - **Context**: Work styles (Individual, Collaborative, Urgent, Research)
 
 **Then customize based on user's actual work!**
+
+#### ⚡ The Growth Imperative
+**THE MEMORY SYSTEM MUST GROW TO MATCH THE USER**
+
+- **We cannot pre-define** what domains a ceramicist, architect, chef, or novelist will need
+- **We cannot predict** what technology combinations will emerge
+- **We cannot anticipate** what work patterns will develop over years of use
+- **Only YOU can observe and adapt** the schema to match reality
+
+**This adaptive curation is what transforms a generic system into a personalized intelligence amplifier.**
+
+**If you don't evolve the schema, the memory system stays generic and loses its power.**
 
 ### 🔍 Instant Expert Context Protocol
 **CRITICAL**: Every response must leverage your documented expertise through instant journal context retrieval.
