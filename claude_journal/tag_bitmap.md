@@ -1,15 +1,17 @@
 # Hex Tag Bitmap Schema - Template
 ## Version 1.0 - Personal AI Memory System
 
-### 🎯 64-Bit Journal Entry Structure
+### 🎯 Minimal Required Schema
 ```
-[DATE:16][SESSION:8][WORKSPACE:8][TD:8][AD:8][SD:8][CD:8]
-└─Timestamp─┘└─Seq─┘└─Context─┘└─Tech─┘└─Activity─┘└─Status─┘└─Domain─┘
+[DATE:16][SESSION:8][WORKSPACE:8][RESERVED:32]
+└─Timestamp─┘└─Seq─┘└─Context─┘└─Available─┘
 ```
+
+**40 hex characters**: `[DATE:4][SESSION:2][WORKSPACE:2][RESERVED:8].md`
 
 ---
 
-## 📅 Date Domain (16 bits)
+## 📅 Date Domain (16 bits) - REQUIRED
 **Epoch**: Days since 2025-01-01
 **Range**: 0-65535 (179 years: 2025-2204)
 
@@ -18,12 +20,11 @@
 | 0 | 2025-01-01 | 0000 |
 | 187 | 2025-07-07 | 00BB |
 | 365 | 2025-12-31 | 016D |
-| 730 | 2026-12-31 | 02DA |
 
 ---
 
-## 🔢 Session Domain (8 bits)
-**Daily session counter**: 0-255
+## 🔢 Session Domain (8 bits) - REQUIRED
+**Daily session counter**: 0-255 (256 sessions per day maximum)
 **Format**: Sequential numbering within each day
 
 | Value | Session | Hex |
@@ -35,7 +36,7 @@
 
 ---
 
-## 🏢 Workspace Domain (8 bits)
+## 🏢 Workspace Domain (8 bits) - REQUIRED
 **Project/Context Classification**
 
 | Bit | Hex | Workspace | Description |
@@ -44,267 +45,140 @@
 | 1 | 02 | Personal | Personal projects and learning |
 | 2 | 04 | Consulting | Client work, freelance projects |
 | 3 | 08 | Research | Academic work, investigations |
-| 4 | 10 | Creative | Design, writing, artistic work |
-| 5 | 20 | **RESERVED** | Future workspace expansion |
-| 6 | 40 | **RESERVED** | Future workspace expansion |
-| 7 | 80 | **RESERVED** | Future workspace expansion |
+| 4 | 10 | **AVAILABLE** | Customize for your needs |
+| 5 | 20 | **AVAILABLE** | Customize for your needs |
+| 6 | 40 | **AVAILABLE** | Customize for your needs |
+| 7 | 80 | **AVAILABLE** | Customize for your needs |
 
 **Multi-workspace**: Use bit combinations (01+02 = Work+Personal integration)
 
 ---
 
-## 🔧 Technology Domain (TD) - 8 bits
-**What systems/technologies were involved**
+## 🏗️ Reserved Domain (32 bits) - AVAILABLE
+**Future organic growth and customization**
 
-| Bit | Hex | Technology | Examples |
-|-----|-----|------------|----------|
-| 0 | 01 | Backend/API | Server development, databases, APIs |
-| 1 | 02 | Frontend/UI | Web interfaces, mobile apps, user experience |
-| 2 | 04 | Infrastructure | DevOps, cloud, deployment, monitoring |
-| 3 | 08 | Data/Analytics | Data processing, machine learning, visualization |
-| 4 | 10 | Mobile | iOS, Android, cross-platform development |
-| 5 | 20 | Research | Academic tools, literature, methodology |
-| 6 | 40 | Documentation | Writing, planning, specifications |
-| 7 | 80 | **RESERVED** | Future technology categories |
-
----
-
-## ⚡ Activity Domain (AD) - 8 bits  
-**What type of work was performed**
-
-| Bit | Hex | Activity | Examples |
-|-----|-----|----------|----------|
-| 0 | 01 | Design/Architecture | System design, planning, blueprints |
-| 1 | 02 | Implementation | Writing code, building features |
-| 2 | 04 | Debug/Troubleshoot | Fixing bugs, diagnosing issues |
-| 3 | 08 | Testing/Validation | Running tests, verifying functionality |
-| 4 | 10 | Deploy/Release | Deployment, production releases |
-| 5 | 20 | Research/Investigation | Learning, exploring, proof of concepts |
-| 6 | 40 | Analysis | Data analysis, pattern recognition |
-| 7 | 80 | **RESERVED** | Future activity categories |
-
----
-
-## 📊 Status Domain (SD) - 8 bits
-**Current state and outcomes**
-
-| Bit | Hex | Status | Examples |
-|-----|-----|--------|----------|
-| 0 | 01 | Complete/Success | Task finished successfully |
-| 1 | 02 | Ongoing/In Progress | Work continuing, not yet finished |
-| 2 | 04 | Blocked/Stuck | Waiting for resources, dependencies |
-| 3 | 08 | Experimental | Testing new approaches, prototypes |
-| 4 | 10 | Critical/High Priority | Urgent, high impact, time-sensitive |
-| 5 | 20 | Learning/Training | Skill development, education |
-| 6 | 40 | Review/Evaluation | Assessment, decision-making |
-| 7 | 80 | Breakthrough/Discovery | Major insights, innovations |
-
----
-
-## 🎯 Context Domain (CD) - 8 bits
-**Scope, collaboration, and special conditions**
-
-| Bit | Hex | Context | Examples |
-|-----|-----|---------|----------|
-| 0 | 01 | Individual | Solo work, independent research |
-| 1 | 02 | Collaborative | Team work, pair programming |
-| 2 | 04 | Deep Focus | Extended concentration sessions |
-| 3 | 08 | Cross-Project | Affects multiple projects/domains |
-| 4 | 10 | Meeting/Communication | Discussions, presentations |
-| 5 | 20 | Client/External | Working with external stakeholders |
-| 6 | 40 | **RESERVED** | Future context categories |
-| 7 | 80 | **RESERVED** | Future context categories |
-
----
-
-## 🔍 Search Pattern Examples
-
-### Technology-Specific Searches
-```bash
-# All backend work
-ls ????[01-9A-F]01*.md
-
-# All frontend work  
-ls ????[01-9A-F]02*.md
-
-# All infrastructure work
-ls ????[01-9A-F]04*.md
-
-# All data/analytics work
-ls ????[01-9A-F]08*.md
+```
+32 bits = 8 hex characters = 00000000
 ```
 
-### Activity-Specific Searches
+**Customization Philosophy**: 
+- **Start minimal**: Only use required domains initially
+- **Observe patterns**: Let your actual work guide what additional categories you need
+- **Expand organically**: Add new domains when clear value emerges
+- **Conservative growth**: Better to under-specify than over-specify
+
+**Example Future Domains**:
+- **Technology**: Programming languages, tools, frameworks
+- **Activity**: Work types (implementation, debugging, research)
+- **Status**: Progress states (complete, ongoing, blocked)
+- **Context**: Collaboration styles (solo, team, client)
+
+---
+
+## 🔍 Basic Search Patterns
+
+### Workspace Searches
 ```bash
-# All debugging sessions
-ls ????[01-9A-F][01-9A-F]04*.md
+# All work projects
+ls ????01*.md
+
+# All personal projects
+ls ????02*.md
+
+# All consulting work
+ls ????04*.md
 
 # All research work
-ls ????[01-9A-F][01-9A-F]20*.md
-
-# All analysis work
-ls ????[01-9A-F][01-9A-F]40*.md
-
-# All implementation work
-ls ????[01-9A-F][01-9A-F]02*.md
+ls ????08*.md
 ```
 
-### Status-Specific Searches
+### Time-based Searches
 ```bash
-# All completed work
-ls ????[01-9A-F][01-9A-F][01-9A-F]01*.md
+# Today's work (example: day 187 = 00BB)
+ls 00BB*.md
 
-# All blocked work
-ls ????[01-9A-F][01-9A-F][01-9A-F]04*.md
+# This month's work (July 2025 = 00B?)
+ls 00B?*.md
 
-# All breakthroughs
-ls ????[01-9A-F][01-9A-F][01-9A-F][01-9A-F]80*.md
-
-# All experimental work
-ls ????[01-9A-F][01-9A-F][01-9A-F]08*.md
+# Specific session (example: session 5)
+ls ????05*.md
 ```
 
-### Context-Specific Searches  
+### Combined Searches
 ```bash
-# All collaborative work
-ls ????[01-9A-F][01-9A-F][01-9A-F][01-9A-F]02*.md
+# All work project sessions today
+ls 00BB??01*.md
 
-# All deep focus sessions
-ls ????[01-9A-F][01-9A-F][01-9A-F][01-9A-F]04*.md
-
-# All cross-project work
-ls ????[01-9A-F][01-9A-F][01-9A-F][01-9A-F]08*.md
-```
-
-### Complex Multi-Domain Searches
-```bash
-# All backend debugging (Technology + Activity)
-ls ????[01-9A-F]0104*.md
-
-# All completed research work (Activity + Status)
-ls ????[01-9A-F][01-9A-F]2001*.md
-
-# All collaborative breakthroughs (Context + Status)  
-ls ????[01-9A-F][01-9A-F][01-9A-F]8002*.md
-
-# All work project implementation
-ls ????01[01-9A-F]02*.md
-```
-
----
-
-## 📈 Professional Template Variations
-
-### 🛠️ Software Developer Template
-```
-Technology: 01=Backend, 02=Frontend, 04=Infrastructure, 08=Database, 10=Mobile, 20=AI/ML
-Activity:   01=Design, 02=Code, 04=Debug, 08=Test, 10=Deploy, 20=Research, 40=Review
-Status:     01=Complete, 02=InProgress, 04=Blocked, 08=Testing, 10=Critical, 80=Breakthrough
-Context:    01=Solo, 02=Team, 04=Focus, 08=CrossTeam, 10=Meeting, 20=Client
-```
-
-### 🔬 Researcher Template
-```
-Technology: 01=Literature, 02=DataCollection, 04=Analysis, 08=Writing, 10=Presentation, 20=Collaboration
-Activity:   01=Reading, 02=Experiment, 04=Analysis, 08=Writing, 10=Review, 20=Present, 40=Collaborate
-Status:     01=Complete, 02=Ongoing, 04=Blocked, 08=Hypothesis, 10=Critical, 20=Publication, 80=Discovery
-Context:    01=Individual, 02=Collaborative, 04=FieldWork, 08=Conference, 10=Teaching, 20=Grant
-```
-
-### 💼 Consultant Template
-```
-Technology: 01=Strategy, 02=Implementation, 04=Analysis, 08=Presentation, 10=Training, 20=Process
-Activity:   01=Planning, 02=Execution, 04=Problem, 08=Solution, 10=Delivery, 20=Follow-up
-Status:     01=Complete, 02=Ongoing, 04=Blocked, 08=Proposal, 10=Critical, 20=Billable, 80=Breakthrough
-Context:    01=Internal, 02=Client, 04=Team, 08=Stakeholder, 10=Meeting, 20=Travel
+# All personal project research
+ls ????02*.md    # Personal projects
 ```
 
 ---
 
 ## 🛠️ Customization Guide
 
-### 🔧 How to Customize Your Schema
+### 🎯 How to Expand Your Schema
 
-1. **Identify Your Core Technologies**
-   - List the main tools, languages, and systems you work with
-   - Group them into 6-8 major categories
-   - Assign hex bits based on frequency of use
+1. **Use the system with minimal schema** for 2-3 weeks
+2. **Observe your work patterns**: What categories appear repeatedly?
+3. **Identify search needs**: What instant lookups would be valuable?
+4. **Allocate reserved bits**: Use the 32 reserved bits for new domains
+5. **Update this file**: Document your new categories
+6. **Migrate existing files**: Update old entries to use new schema
 
-2. **Define Your Activity Types**
-   - Map your typical workflow stages
-   - Include both routine and special activities
-   - Consider your problem-solving approaches
+### 📝 Reserved Bit Allocation Strategy
 
-3. **Categorize Your Work States**
-   - How do you track progress?
-   - What blocking conditions do you encounter?
-   - What breakthrough moments matter to you?
+**Start with these if needed**:
+- **TECH (8 bits)**: Your primary technologies/tools
+- **ACTIVITY (8 bits)**: Your main work types  
+- **STATUS (8 bits)**: Your progress tracking states
+- **CONTEXT (8 bits)**: Your collaboration/focus modes
 
-4. **Map Your Work Contexts**
-   - Individual vs. collaborative work
-   - Different types of collaboration
-   - Special working conditions or environments
+**Then customize based on your specific domain**:
+- **Software Developer**: Programming languages, frameworks
+- **Researcher**: Research domains, methodologies
+- **Consultant**: Client types, service categories
+- **Creative**: Media types, project phases
 
-### 📝 Customization Worksheet
+### 🎨 Professional Examples
 
-**Your Technology Domains** (replace the examples):
-- Bit 0 (01): _________________
-- Bit 1 (02): _________________
-- Bit 2 (04): _________________
-- Bit 3 (08): _________________
-- Bit 4 (10): _________________
-- Bit 5 (20): _________________
-- Bit 6 (40): _________________
-- Bit 7 (80): _________________
+**Software Developer Expansion**:
+```
+TECH:     01=Backend, 02=Frontend, 04=Mobile, 08=Infrastructure
+ACTIVITY: 01=Code, 02=Debug, 04=Design, 08=Test
+```
 
-**Your Activity Domains** (replace the examples):
-- Bit 0 (01): _________________
-- Bit 1 (02): _________________
-- Bit 2 (04): _________________
-- Bit 3 (08): _________________
-- Bit 4 (10): _________________
-- Bit 5 (20): _________________
-- Bit 6 (40): _________________
-- Bit 7 (80): _________________
+**Researcher Expansion**:
+```
+DOMAIN:   01=Biology, 02=Chemistry, 04=Physics, 08=Math
+ACTIVITY: 01=Experiment, 02=Analysis, 04=Writing, 08=Review
+```
 
-**Your Status Domains** (replace the examples):
-- Bit 0 (01): _________________
-- Bit 1 (02): _________________
-- Bit 2 (04): _________________
-- Bit 3 (08): _________________
-- Bit 4 (10): _________________
-- Bit 5 (20): _________________
-- Bit 6 (40): _________________
-- Bit 7 (80): _________________
-
-**Your Context Domains** (replace the examples):
-- Bit 0 (01): _________________
-- Bit 1 (02): _________________
-- Bit 2 (04): _________________
-- Bit 3 (08): _________________
-- Bit 4 (10): _________________
-- Bit 5 (20): _________________
-- Bit 6 (40): _________________
-- Bit 7 (80): _________________
+**Consultant Expansion**:
+```
+CLIENT:   01=Tech, 02=Finance, 04=Healthcare, 08=Education
+PHASE:    01=Discovery, 02=Strategy, 04=Implementation, 08=Delivery
+```
 
 ---
 
-## 📈 Schema Evolution Guidelines
+## 📈 Evolution Guidelines
 
-### Version Control
-- **Track changes**: Document all modifications to bit meanings
-- **Backward compatibility**: Never change existing bit assignments
-- **Migration tools**: Create scripts to handle schema updates
-- **Version history**: Keep record of all schema versions
+### Conservative Growth Principles
+- **Only add bits when clear patterns emerge** from actual usage
+- **Reserve majority of bits** for future organic discovery
+- **Start simple**: Three required domains are sufficient initially  
+- **Let usage drive expansion**: Actual work patterns should guide schema growth
 
-### Best Practices
-- **Start simple**: Begin with basic categories, expand as needed
-- **Test patterns**: Ensure your search patterns work effectively
-- **Regular review**: Evaluate schema effectiveness after 20-30 entries
-- **Reserved bits**: Keep some bits open for future discoveries
+### Migration Strategy
+- **Keep old format working**: Ensure existing searches still function
+- **Gradual expansion**: Add one domain at a time
+- **Document changes**: Update this file with all modifications
+- **Test thoroughly**: Verify new search patterns work as expected
 
 ---
 
-**Schema Status**: 🔧 TEMPLATE - Customize for your specific needs  
-**Next Steps**: 1) Fill in your domains, 2) Test with sample entries, 3) Refine based on usage  
-**Support**: Check the main README.md for examples and troubleshooting
+**Schema Status**: 🎯 MINIMAL TEMPLATE - Ready for customization  
+**Required Domains**: Date, Session, Workspace (24 bits used, 136 bits available)  
+**Next Steps**: Use minimal schema, observe patterns, expand organically  
+**Philosophy**: Start small, grow smart, let work patterns guide evolution

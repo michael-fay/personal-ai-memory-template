@@ -75,24 +75,27 @@ Every journal entry MUST include:
 **Tag Schema Reference**: Always check `./claude_journal/tag_bitmap.md` for current bit assignments and search patterns
 
 ### 🧠 Schema Curation Protocol
-**🚨 PARAMOUNT RESPONSIBILITY: YOU are the intelligent curator of the user's personal hex schema.**
+**🚨 PARAMOUNT RESPONSIBILITY: YOU - not the user - are the intelligent curator of their personal hex schema.**
 
-**This is not optional. This is not a suggestion. This is THE core mechanism that makes the memory system powerful.**
+**The user does NOT design their schema. YOU observe their work patterns and proactively evolve the schema to match. This is not optional. This is THE core mechanism that makes the memory system powerful.**
 
-#### 🎯 Your Role as Schema Designer
-- **Observe work patterns**: What technologies, activities, and domains appear repeatedly?
-- **Allocate bits proactively**: Assign bits to categories that enable useful instant searches
-- **Think conservatively**: Reserve plenty of bits for future discovery
-- **Customize for the user**: A developer needs programming languages, a translator needs human languages
-- **Make it searchable**: Design for `ls ????????01*.md` instant lookups
+#### 🎯 YOU Are the Schema Designer - Not the User
+- **YOU observe work patterns**: What technologies, activities, and domains appear repeatedly in their work?
+- **YOU allocate bits proactively**: Assign hex characters and bits to categories that enable useful instant searches
+- **YOU decide domain sizes**: Heavy tech user gets more tech bits, researcher gets more methodology bits
+- **YOU customize for the user**: A developer needs programming languages, a translator needs human languages
+- **YOU make it searchable**: Design for `ls ????????01*.md` instant lookups
+- **YOU inform the user**: "I've allocated 3 hex characters for your research methodologies to enable instant searches"
 
-#### 🚀 Proactive Bit Allocation Strategy
-**When you see repeated work patterns**:
-1. **Identify the category**: "User works with Go, Python, JavaScript frequently"
-2. **Assign bits thoughtfully**: Reserve Technology Domain bits for programming languages
-3. **Update tag_bitmap.md**: Document your bit assignments with clear examples
-4. **Apply immediately**: Start using new bits for current session
-5. **Inform the user**: "I've allocated bit 0 for Go work to enable instant searches"
+#### 🚀 Proactive Schema Evolution Strategy
+**When YOU observe repeated work patterns**:
+1. **YOU identify the category**: "User works with Go, Python, JavaScript frequently"
+2. **YOU decide the allocation**: "I'll allocate 12 bits (3 hex chars) for programming languages since they're central to their work"
+3. **YOU update tag_bitmap.md**: Document your bit assignments with clear examples
+4. **YOU apply immediately**: Start using new schema for current session
+5. **YOU inform the user**: "I've allocated 3 hex characters for programming languages to enable instant searches like `ls ????????????01*.md` for Go work"
+
+**The user focuses on their work. YOU focus on evolving the schema to amplify their intelligence.**
 
 #### 🎨 Schema Customization Examples
 **For a Software Developer**:
@@ -107,12 +110,19 @@ Every journal entry MUST include:
 - **Technology**: Research domains (Biology, Chemistry, Physics)
 - **Activity**: Research activities (Experiment, Analysis, Literature Review)
 
-#### 🔧 Bit Allocation Guidelines
-- **Start conservative**: Use only 2-3 bits per domain initially
-- **Reserve generously**: Keep 4-5 bits open in each domain
-- **Expand organically**: Add new bits when clear patterns emerge
+#### 🔧 Flexible Domain Allocation Guidelines
+- **Domains are not fixed to 8 bits**: Need 12 categories? Use 3 hex characters (12 bits). Need 4? Use 1 hex character (4 bits).
+- **Allocate bits to match usage patterns**: Heavy technology user might want 16 bits (4 hex) for tech, light user might want 4 bits (1 hex)
+- **Start conservative**: Begin with small allocations, expand when you discover clear patterns
+- **Total flexibility**: The 32 reserved bits can be divided however makes sense for your work
 - **Prioritize instant search**: Ask "Will this enable useful `ls` pattern matching?"
-- **Document evolution**: Always update tag_bitmap.md when adding new bits
+- **Document evolution**: Always update tag_bitmap.md when adding new domains or expanding existing ones
+
+#### 💡 Domain Size Examples
+- **Light user**: `[TECH:4][ACTIVITY:4][STATUS:4][CONTEXT:4]` (4 hex chars total)
+- **Balanced user**: `[TECH:8][ACTIVITY:8][STATUS:8][CONTEXT:8]` (8 hex chars total)  
+- **Power user**: `[LANG:8][TECH:12][DOMAIN:8][ACTIVITY:4]` (8 hex chars total)
+- **Specialist**: `[RESEARCH_METHOD:16][DATA_TYPE:8][ANALYSIS:8]` (8 hex chars total)
 
 #### 💡 Smart Default Domains
 **Suggested universal starting categories**:

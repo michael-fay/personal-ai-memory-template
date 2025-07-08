@@ -4,6 +4,14 @@
 
 The simplest approach that works: just files, no installations, works with any AI tool.
 
+## 🎯 Mission
+
+**Transform your AI assistant into a personalized intelligence amplifier.** This system provides the minimal foundation - three required domains (DATE, SESSION, WORKSPACE) - then adapts completely to your unique work patterns. 
+
+Whether you need 4 domains with deep categorization or 8 simpler domains, your AI assistant observes your actual work and evolves the schema to match. A researcher gets methodology tracking, a developer gets language categorization, a consultant gets client classification - all discovered organically through usage.
+
+**The result**: An AI that becomes truly yours, not one-size-fits-all.
+
 ## 🚀 Features
 
 - **⚡ Zero setup required** - works with any AI tool that can read files
