@@ -45,29 +45,11 @@ Your AI assistant learns your specific context, projects, and preferences throug
 
 ## 🎯 Quick Start
 
-### TL;DR Consumer Workflow:
-1. **Use this template** → Click "Use this template" on GitHub
-2. **One command** → Copy and paste the command below
-3. **Profit** → Your AI assistant now has perfect memory!
-
-### Ultra-Simple One-Liner (Mac/Linux):
-```bash
-# From your desired workspace directory:
-curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash
-```
-
-### Windows Users:
-```cmd
-REM From your desired workspace directory:
-curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.bat -o install.bat && install.bat
-```
-
-**What it does:**
-- Prompts for your personal repository URL (the one you created from this template)
-- Clones your repository automatically to your workspace
-- Sets up the system with interactive prompts for personalization
-- Creates your personalized CLAUDE.md and directory structure
-- Ready to use immediately with your AI assistant!
+### TL;DR Workflow:
+1. **Create your journal repository** → Click "Use this template" on GitHub
+2. **Create workspace directory** → `mkdir ~/projects/my-workspace && cd ~/projects/my-workspace`
+3. **Bootstrap workspace** → One curl command (see [Installation](#-installation))
+4. **Start using** → Your AI assistant now has perfect memory across all workspaces!
 
 ## 🔧 Technical Details
 
@@ -191,57 +173,106 @@ and your company's security requirements documented in 00B9040201,
 I recommend extending your existing pattern..."
 ```
 
+## 🏗️ Three-Tier Architecture
+
+**NEW:** This system now uses a three-tier architecture for optimal workspace flexibility:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Template Repository                          │
+│              michael-fay/personal-ai-memory-template           │
+│                     (Community Template)                       │
+└─────────────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   Journal Repository                            │
+│                   YOUR_USERNAME/my-ai-journal                  │
+│                    (Personal Memory)                           │
+└─────────────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    Workspace Directory                         │
+│                ~/projects/your-workspace/                      │
+│                  (Project-Specific)                            │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Benefits of Three-Tier Architecture
+
+1. **Template Evolution**: Community improvements flow to all users
+2. **Shared Memory**: One journal repository serves multiple workspaces
+3. **Workspace Isolation**: Each project gets its own detached workspace
+4. **Microservice Support**: Multiple git repositories per workspace
+5. **Template Updates**: Your improvements help the entire community
+
+### Workspace Creation Workflow
+
+```bash
+# Step 1: Create your journal repository (one-time)
+gh repo create my-username/my-ai-journal --template michael-fay/personal-ai-memory-template
+
+# Step 2: Create workspace for each project
+mkdir ~/projects/react-native-plugins
+cd ~/projects/react-native-plugins
+
+# Step 3: Bootstrap workspace with shared journal
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/.bootstrap/install.sh | bash
+# Enter your journal repo URL when prompted
+```
+
+### Result: Perfect Separation
+
+```
+~/projects/react-native-plugins/    # Your workspace (NOT git managed)
+├── CLAUDE.md                       # Workspace-specific instructions
+├── claude_artifacts/               # Workspace artifacts
+├── claude_journal/                 # Clone of your journal repo
+├── .gitignore                      # Excludes journal from workspace commits
+├── microservice1/                  # Git repo 1
+├── microservice2/                  # Git repo 2
+└── microservice3/                  # Git repo 3
+```
+
 ## 🔧 Installation
 
-### Method 1: Use This Template (Recommended)
+### Step 1: Create Your Journal Repository (One-Time Setup)
 
-**Mac/Linux:**
+Click the "Use this template" button above to create your personal journal repository.
+
+### Step 2: Create and Bootstrap a Workspace
+
 ```bash
-# Create your personal repository from this template
-gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
+# Create workspace directory
+mkdir ~/projects/your-workspace-name
+cd ~/projects/your-workspace-name
 
-# Clone and setup from your desired workspace
-git clone https://github.com/YOUR_USERNAME/my-ai-memory.git
-cd my-ai-memory
-
-# Interactive setup
-./scripts/install.sh --interactive
+# Bootstrap workspace with your journal
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/.bootstrap/install.sh | bash
 ```
 
 **Windows:**
 ```cmd
-REM Create your personal repository from this template
-gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
+REM Create workspace directory
+mkdir C:\projects\your-workspace-name
+cd C:\projects\your-workspace-name
 
-REM Clone and setup from your desired workspace
-git clone https://github.com/YOUR_USERNAME/my-ai-memory.git
-cd my-ai-memory
-
-REM Interactive setup
-scripts\install.bat --interactive
+REM Bootstrap workspace with your journal
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/.bootstrap/install.bat -o install.bat && install.bat
 ```
 
-### Method 2: Direct Install from GitHub (Mac/Linux)
+The script will prompt you for your journal repository URL and set up everything automatically.
 
-```bash
-# Install directly into current directory
-curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --interactive --target .
+### What Gets Created
+
 ```
-
-### Method 3: Install in Existing Project
-
-**Mac/Linux:**
-```bash
-# Add to existing project
-cd /path/to/your/existing/project
-curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --target .
-```
-
-**Windows:**
-```cmd
-REM Add to existing project
-cd C:\path\to\your\existing\project
-curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.bat -o install.bat && install.bat
+your-workspace-name/
+├── CLAUDE.md                          # Workspace-specific AI instructions
+├── claude_artifacts/                  # Workspace artifacts and analysis
+├── claude_journal/                    # Your shared journal repository
+├── .gitignore                         # Excludes journal from workspace repos
+└── [your project files and repos]    # Your actual work
 ```
 
 ## 🎛️ Usage
