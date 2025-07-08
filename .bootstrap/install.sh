@@ -39,6 +39,7 @@ echo ""
 INTERACTIVE=true
 TARGET_DIR=""
 JOURNAL_REPO_URL=""
+JOURNAL_BRANCH="main"
 WORKSPACE_NAME=""
 USER_NAME=""
 USER_EMAIL=""
@@ -55,6 +56,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --journal-repo)
             JOURNAL_REPO_URL="$2"
+            shift 2
+            ;;
+        --journal-branch)
+            JOURNAL_BRANCH="$2"
             shift 2
             ;;
         --workspace)
@@ -75,6 +80,7 @@ while [[ $# -gt 0 ]]; do
             echo "  -n, --non-interactive    Run in non-interactive mode"
             echo "  -t, --target DIR         Target directory (default: current directory)"
             echo "  --journal-repo URL       Your personal AI memory repository URL"
+            echo "  --journal-branch BRANCH  Journal repository branch (default: main)"
             echo "  --workspace NAME         Workspace name"
             echo "  --user-name NAME         Your name"
             echo "  --user-email EMAIL       Your email"
@@ -162,7 +168,7 @@ if [[ -d "claude_journal" ]]; then
     rm -rf claude_journal
 fi
 
-git clone "$JOURNAL_REPO_URL" claude_journal
+git clone -b "$JOURNAL_BRANCH" "$JOURNAL_REPO_URL" claude_journal
 cd claude_journal
 
 # Step 2: Get the template content
