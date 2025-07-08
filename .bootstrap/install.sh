@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Personal AI Memory System - Three-Tier Architecture Installation Script
+# Personal AI Memory System - Shared Memory Architecture Installation Script
 # This script sets up a workspace with shared journal repository
 
 set -e
@@ -32,7 +32,7 @@ print_header() {
 print_header "🧠 Personal AI Memory System - Workspace Setup"
 echo ""
 echo "This script will set up a new workspace with your shared journal repository."
-echo "Three-tier architecture: Template → Journal Repository → Workspace"
+echo "Shared memory architecture: Template → Journal Repository → Workspace"
 echo ""
 
 # Parse command line arguments
@@ -228,7 +228,7 @@ cat > claude_artifacts/workspace_setup_$(date +%Y%m%d_%H%M%S).md << EOF
 - **CLAUDE.md**: Generated from template with workspace customizations
 - **claude_artifacts/**: Created for workspace-specific artifacts
 
-## Three-Tier Architecture
+## Shared Memory Architecture
 1. **Template Repository**: michael-fay/personal-ai-memory-template
 2. **Journal Repository**: $JOURNAL_REPO_URL
 3. **Workspace**: $WORKSPACE_NAME (this directory)

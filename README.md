@@ -173,9 +173,9 @@ and your company's security requirements documented in 00B9040201,
 I recommend extending your existing pattern..."
 ```
 
-## 🏗️ Three-Tier Architecture
+## 🏗️ Shared Memory Architecture
 
-**NEW:** This system now uses a three-tier architecture for optimal workspace flexibility:
+**NEW:** This system uses a shared memory architecture for optimal workspace flexibility:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -199,7 +199,7 @@ I recommend extending your existing pattern..."
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Benefits of Three-Tier Architecture
+### Benefits of Shared Memory Architecture
 
 1. **Template Evolution**: Community improvements flow to all users
 2. **Shared Memory**: One journal repository serves multiple workspaces
@@ -350,43 +350,11 @@ ls ????010201*.md                            # Completed backend implementations
 
 ### Professional Templates
 
-Choose from pre-configured templates:
-
-#### 🛠️ Software Developer
-```bash
-./.bootstrap/install.sh --template developer
-```
-- **Technologies**: Backend, Frontend, Infrastructure, Database, Mobile, AI/ML
-- **Activities**: Design, Code, Debug, Test, Deploy, Research, Review
-- **Status**: Complete, InProgress, Blocked, Testing, Critical, Breakthrough
-
-#### 🔬 Researcher
-```bash
-./.bootstrap/install.sh --template researcher
-```
-- **Technologies**: Literature, DataCollection, Analysis, Writing, Presentation
-- **Activities**: Reading, Experiment, Analysis, Writing, Review, Present
-- **Status**: Complete, Ongoing, Blocked, Hypothesis, Publication, Discovery
-
-#### 💼 Consultant
-```bash
-./.bootstrap/install.sh --template consultant
-```
-- **Technologies**: Strategy, Implementation, Analysis, Presentation, Training
-- **Activities**: Planning, Execution, Problem-solving, Solution, Delivery
-- **Status**: Complete, Ongoing, Blocked, Proposal, Billable, Breakthrough
-
-#### 🎨 Creative Professional
-```bash
-./.bootstrap/install.sh --template creative
-```
-- **Technologies**: Design, Writing, Media, Presentation, Collaboration
-- **Activities**: Concept, Create, Refine, Present, Feedback, Iterate
-- **Status**: Complete, InProgress, Review, Client, Revision, Breakthrough
+The schema evolves naturally based on your actual work patterns. The AI observes your work and creates the optimal categorization system for your specific needs.
 
 ### Custom Schema
 
-Edit `claude_journal/tag_bitmap.md` to define your own domains:
+As you use the system, you can edit `claude_journal/tag_bitmap.md` to document your evolved schema:
 
 ```markdown
 ## 🔧 Technology Domain (TD) - 8 bits
@@ -520,12 +488,12 @@ git push origin feature/your-feature
 
 ## 🏆 Community
 
-### 📖 Professional Templates
-Share your customized templates:
-- **Academic Researcher**: Literature review and publication workflows
-- **Product Manager**: Feature planning and user research
-- **Designer**: Creative process and client collaboration
-- **Data Scientist**: Experiment tracking and model development
+### 📖 Community Templates
+Contribute your evolved schemas and workflows:
+- **Schema examples**: Share your tag_bitmap.md after it evolves for your work
+- **Workflow patterns**: Document successful AI collaboration approaches
+- **Search strategies**: Share useful hex pattern searches you've discovered
+- **Integration ideas**: Creative ways to use the memory system
 
 ### 🔗 Integrations
 Build tools that work with the system:
