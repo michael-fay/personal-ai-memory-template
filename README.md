@@ -198,7 +198,7 @@ I recommend extending your existing pattern..."
 **Mac/Linux:**
 ```bash
 # Create your personal repository from this template
-gh repo create my-ai-memory --template YOUR_USERNAME/personal-ai-memory-template --private
+gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
 
 # Clone and setup from your desired workspace
 git clone https://github.com/YOUR_USERNAME/my-ai-memory.git
@@ -211,7 +211,7 @@ cd my-ai-memory
 **Windows:**
 ```cmd
 REM Create your personal repository from this template
-gh repo create my-ai-memory --template YOUR_USERNAME/personal-ai-memory-template --private
+gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
 
 REM Clone and setup from your desired workspace
 git clone https://github.com/YOUR_USERNAME/my-ai-memory.git
@@ -225,7 +225,7 @@ scripts\install.bat --interactive
 
 ```bash
 # Install directly into current directory
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --interactive --target .
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --interactive --target .
 ```
 
 ### Method 3: Install in Existing Project
@@ -234,14 +234,14 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/personal-ai-memory-te
 ```bash
 # Add to existing project
 cd /path/to/your/existing/project
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --target .
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash -s -- --target .
 ```
 
 **Windows:**
 ```cmd
 REM Add to existing project
 cd C:\path\to\your\existing\project
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/personal-ai-memory-template/main/scripts/install.bat -o install.bat && install.bat
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.bat -o install.bat && install.bat
 ```
 
 ## 🎛️ Usage
@@ -526,7 +526,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ```bash
 # Create your personal AI memory system
-gh repo create my-ai-memory --template YOUR_USERNAME/personal-ai-memory-template --private
+gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
 cd my-ai-memory
 ./scripts/install.sh --interactive
 
