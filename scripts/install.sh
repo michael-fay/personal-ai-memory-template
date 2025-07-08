@@ -29,11 +29,15 @@ print_header() {
     echo -e "${BLUE}$1${NC}"
 }
 
-# Check if we're in the template directory
-if [[ ! -f "CLAUDE.md" ]] || [[ ! -f "claude_journal/tag_bitmap.md" ]]; then
-    print_error "This script must be run from the personal-ai-memory-template directory."
-    print_error "Please run: cd personal-ai-memory-template && ./scripts/install.sh"
-    exit 1
+# Check if we're running from curl | bash (no local template files)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+TEMPLATE_ROOT="$(dirname "$SCRIPT_DIR")"
+REMOTE_INSTALL=false
+
+# If we can't find template files, we're running remotely
+if [[ ! -f "$TEMPLATE_ROOT/__CLAUDE_TEMPLATE.md" ]] || [[ ! -f "$TEMPLATE_ROOT/claude_journal/tag_bitmap.md" ]]; then
+    REMOTE_INSTALL=true
+    print_status "Running remote installation from curl | bash"
 fi
 
 print_header "🧠 Personal AI Memory System Setup"
@@ -46,6 +50,7 @@ echo ""
 INTERACTIVE=false
 TARGET_DIR=""
 TEMPLATE_TYPE=""
+USER_REPO_URL=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -61,12 +66,17 @@ while [[ $# -gt 0 ]]; do
             TEMPLATE_TYPE="$2"
             shift 2
             ;;
+        --repo)
+            USER_REPO_URL="$2"
+            shift 2
+            ;;
         -h|--help)
             echo "Usage: $0 [OPTIONS]"
             echo "Options:"
             echo "  -i, --interactive    Run in interactive mode"
             echo "  -t, --target DIR     Target directory (default: current directory)"
             echo "  --template TYPE      Use predefined template (developer, researcher, consultant)"
+            echo "  --repo URL           Your personal AI memory repository URL"
             echo "  -h, --help          Show this help message"
             exit 0
             ;;
@@ -76,6 +86,49 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+
+# Handle remote installation - clone user's repo first
+if [[ "$REMOTE_INSTALL" == "true" ]]; then
+    print_header "📥 Remote Installation Mode"
+    echo ""
+    
+    # Get user's repo URL if not provided
+    if [[ -z "$USER_REPO_URL" ]]; then
+        echo "We need to clone your personal AI memory repository."
+        echo "After clicking 'Use this template', you should have a repo like:"
+        echo "  https://github.com/YOUR_USERNAME/my-ai-memory"
+        echo "  git@github.com:YOUR_USERNAME/my-ai-memory.git"
+        echo ""
+        read -p "Enter your repository URL (SSH or HTTPS): " USER_REPO_URL
+    fi
+    
+    # Validate repo URL
+    if [[ -z "$USER_REPO_URL" ]]; then
+        print_error "Repository URL is required for remote installation"
+        exit 1
+    fi
+    
+    # Extract repo name from URL
+    REPO_NAME=$(basename "$USER_REPO_URL" .git)
+    
+    print_status "Cloning your repository: $USER_REPO_URL"
+    
+    # Clone the user's repo
+    if git clone "$USER_REPO_URL" "$REPO_NAME"; then
+        print_status "Successfully cloned $REPO_NAME"
+        cd "$REPO_NAME"
+        TARGET_DIR="$(pwd)"
+        
+        # Update paths for local execution
+        SCRIPT_DIR="$TARGET_DIR/scripts"
+        TEMPLATE_ROOT="$TARGET_DIR"
+        REMOTE_INSTALL=false
+    else
+        print_error "Failed to clone repository: $USER_REPO_URL"
+        print_error "Please check the URL and your permissions"
+        exit 1
+    fi
+fi
 
 # Default target directory
 if [[ -z "$TARGET_DIR" ]]; then
@@ -139,7 +192,7 @@ mkdir -p "$TARGET_DIR/claude_artifacts"
 
 # Copy and customize CLAUDE.md
 print_status "Setting up CLAUDE.md..."
-cp "CLAUDE.md" "$TARGET_DIR/CLAUDE.md"
+cp "$TEMPLATE_ROOT/__CLAUDE_TEMPLATE.md" "$TARGET_DIR/CLAUDE.md"
 
 # Replace placeholders in CLAUDE.md
 sed -i.bak "s/\[YOUR_NAME\]/$USER_NAME/g" "$TARGET_DIR/CLAUDE.md"
@@ -153,15 +206,15 @@ rm "$TARGET_DIR/CLAUDE.md.bak"
 
 # Copy and customize tag_bitmap.md based on template type
 print_status "Setting up tag bitmap schema..."
-if [[ -f "templates/${TEMPLATE_TYPE}_tag_bitmap.md" ]]; then
-    cp "templates/${TEMPLATE_TYPE}_tag_bitmap.md" "$TARGET_DIR/claude_journal/tag_bitmap.md"
+if [[ -f "$TEMPLATE_ROOT/templates/${TEMPLATE_TYPE}_tag_bitmap.md" ]]; then
+    cp "$TEMPLATE_ROOT/templates/${TEMPLATE_TYPE}_tag_bitmap.md" "$TARGET_DIR/claude_journal/tag_bitmap.md"
 else
-    cp "claude_journal/tag_bitmap.md" "$TARGET_DIR/claude_journal/tag_bitmap.md"
+    cp "$TEMPLATE_ROOT/claude_journal/tag_bitmap.md" "$TARGET_DIR/claude_journal/tag_bitmap.md"
 fi
 
 # Copy helper scripts
 print_status "Installing helper scripts..."
-cp -r "scripts" "$TARGET_DIR/"
+cp -r "$TEMPLATE_ROOT/scripts" "$TARGET_DIR/"
 chmod +x "$TARGET_DIR/scripts/"*.sh
 
 # Initialize git repository if requested

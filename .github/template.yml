@@ -1,0 +1,42 @@
+name: Personal AI Memory System
+description: Transform your AI assistant into a personalized intelligence amplifier with persistent memory and context
+tags:
+  - ai
+  - memory
+  - personal
+  - assistant
+  - productivity
+  - knowledge-management
+  - hex-indexing
+  - claude
+  - template
+  - automation
+excludeFiles:
+  - claude_journal/
+  - personal_*
+  - user_*
+  - .env*
+  - *.local.*
+  - private/
+  - drafts/
+  - *.private.md
+  - *.draft.md
+  - logs/
+  - *.log
+  - __pycache__/
+  - .DS_Store
+  - Thumbs.db
+  - .vscode/
+  - .idea/
+  - .template_dev/
+  - template_test/
+  - test_install/
+includeFiles:
+  - __CLAUDE_TEMPLATE.md
+  - README.md
+  - LICENSE
+  - .gitignore
+  - claude_journal/tag_bitmap.md
+  - docs/
+  - scripts/
+  - templates/
