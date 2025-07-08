@@ -16,6 +16,27 @@
 **Working Style**: [DESCRIBE YOUR WORK PATTERNS - e.g., "Deep focus sessions", "Collaborative problem-solving", "Iterative development"]  
 **Background**: [YOUR PROFESSIONAL BACKGROUND - e.g., "Software engineer", "Data scientist", "Consultant", "Researcher"]
 
+## 📝 TEMPLATE UPDATE PROTOCOL
+**CRITICAL**: When updating workspace instructions in this CLAUDE.md file, also update the template at:
+`./claude_journal/.bootstrap/__CLAUDE_TEMPLATE.md`
+
+### Update Workflow:
+1. **Edit workspace CLAUDE.md** for immediate workspace improvements
+2. **Apply improvements to template**:
+   ```bash
+   # Edit the template for future workspaces
+   vim ./claude_journal/.bootstrap/__CLAUDE_TEMPLATE.md
+   
+   # Commit and push to share with community
+   cd claude_journal
+   git add .bootstrap/__CLAUDE_TEMPLATE.md
+   git commit -m "Improve template with workspace insights"
+   git push
+   ```
+3. **Template automatically benefits** all future workspaces
+
+This ensures improvements flow to future workspaces and the broader template community.
+
 ## 📓 Journal Protocol - Your Primary Memory System
 **CRITICAL**: The journal is Claude's primary memory and indexing system. Every conversation MUST:
 
