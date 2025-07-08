@@ -4,7 +4,7 @@
 
 **Never repeat the same conversation with your AI assistant.**
 
-The simplest approach that works: just files, no installations, works with any AI tool.
+The simplest approach that works: local files with one-time setup, designed for Claude but adaptable to other AI tools. Equal or better performance on your laptop than remote vector databases for personal AI collaboration history.
 
 ## ⚠️ IMPORTANT: Use Template, Don't Clone
 
@@ -15,21 +15,21 @@ This is a template repository. Cloning it directly will give you the template fi
 
 ## 🎯 Mission
 
-**Transform your AI assistant into a personalized intelligence amplifier.** This system provides the minimal foundation - three required domains (DATE, SESSION, WORKSPACE) - then adapts completely to your unique work patterns. 
+**Transform your personal AI conversations into lasting memory.** This system creates a simple foundation that grows with your individual work patterns over time.
 
-Whether you need 4 domains with deep categorization or 8 simpler domains, your AI assistant observes your actual work and evolves the schema to match. A researcher gets methodology tracking, a developer gets language categorization, a consultant gets client classification - all discovered organically through usage.
+Your AI assistant learns your specific context, projects, and preferences through accumulated conversation history. Whether you're a researcher, developer, consultant, or creative - the system adapts to your personal workflow without any configuration.
 
-**The result**: An AI that becomes truly yours, not one-size-fits-all.
+**The result**: Your AI remembers you, your work, and your evolving collaboration patterns.
 
 ## 🚀 Features
 
-- **⚡ Zero setup required** - works with any AI tool that can read files
-- **🗲 Sub-millisecond retrieval** - optimized for personal data scale
-- **🔒 Complete privacy** - everything stays on your machine  
-- **🧠 Cross-domain intelligence** - connects all your work contexts
-- **🎯 Universal compatibility** - future-proof across any AI platform
-- **🔍 Bitwise embeddings** - 100x faster than vector databases
-- **🛠️ Fully customizable** - adapt to any profession or workflow
+- **⚡ Minimal setup required** - one script creates your entire system
+- **🗲 Sub-millisecond retrieval** - optimized for personal AI collaboration history
+- **🔒 Your data, your choice** - local files, private git repo, or your own cloud storage  
+- **🧠 Connects your contexts** - links all your individual projects and conversations
+- **🎯 Designed for Claude** - with architecture adaptable to other AI tools
+- **🔍 Simple hex indexing** - fast search through your personal conversation history
+- **🛠️ Grows with you** - adapts to your individual work patterns over time
 
 ## 📖 Table of Contents
 
@@ -109,12 +109,32 @@ The template repository contains `__CLAUDE_TEMPLATE.md` instead of `CLAUDE.md` t
 
 The install script copies `__CLAUDE_TEMPLATE.md` → `CLAUDE.md` and customizes it with your personal information, giving you a clean, personalized AI instruction file.
 
-### Security & Privacy
+### Storage & Privacy
 
-- **No data collection**: Everything stays on your machine
-- **No external dependencies**: Just bash/batch scripts and standard tools
-- **No API keys required**: Works with any AI tool that can read files
-- **Complete control**: You own all data and can modify anything
+- **Your data, your control**: Store locally, in private git repos, or your own cloud storage
+- **No third-party services**: Just files and folders that you control completely
+- **No API keys required**: Works wherever your AI assistant can read files
+- **Complete ownership**: You decide where data lives and who has access
+
+**Storage Options:**
+- **Local files** - Everything on your laptop/desktop
+- **Private GitHub repo** - Synced across devices, private by default
+- **Your cloud storage** - S3, Google Drive, Dropbox, or any file system
+- **Self-hosted git** - GitLab, Gitea, or your own git server
+
+### AI Tool Compatibility
+
+**Currently Optimized For:**
+- **Claude Code** - Full integration with conversation protocols
+- **Claude (web/API)** - Complete CLAUDE.md instruction support
+
+**Adaptable To:**
+- **GPT-4/ChatGPT** - Modify CLAUDE.md for OpenAI-specific instructions
+- **Gemini** - Adapt memory retrieval patterns for Google's AI
+- **Local LLMs** - Perfect for Ollama, LM Studio, and similar tools
+- **Other AI assistants** - Core hex indexing works universally
+
+**Want to adapt this for your AI tool?** We welcome contributions! The core memory system (hex indexing, file-based storage, context retrieval) is AI-agnostic. Only the instruction format needs adaptation.
 
 ## 🧠 How It Works
 
