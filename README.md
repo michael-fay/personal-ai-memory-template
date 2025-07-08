@@ -354,7 +354,7 @@ Choose from pre-configured templates:
 
 #### 🛠️ Software Developer
 ```bash
-./scripts/install.sh --template developer
+./.bootstrap/install.sh --template developer
 ```
 - **Technologies**: Backend, Frontend, Infrastructure, Database, Mobile, AI/ML
 - **Activities**: Design, Code, Debug, Test, Deploy, Research, Review
@@ -362,7 +362,7 @@ Choose from pre-configured templates:
 
 #### 🔬 Researcher
 ```bash
-./scripts/install.sh --template researcher
+./.bootstrap/install.sh --template researcher
 ```
 - **Technologies**: Literature, DataCollection, Analysis, Writing, Presentation
 - **Activities**: Reading, Experiment, Analysis, Writing, Review, Present
@@ -370,7 +370,7 @@ Choose from pre-configured templates:
 
 #### 💼 Consultant
 ```bash
-./scripts/install.sh --template consultant
+./.bootstrap/install.sh --template consultant
 ```
 - **Technologies**: Strategy, Implementation, Analysis, Presentation, Training
 - **Activities**: Planning, Execution, Problem-solving, Solution, Delivery
@@ -378,7 +378,7 @@ Choose from pre-configured templates:
 
 #### 🎨 Creative Professional
 ```bash
-./scripts/install.sh --template creative
+./.bootstrap/install.sh --template creative
 ```
 - **Technologies**: Design, Writing, Media, Presentation, Collaboration
 - **Activities**: Concept, Create, Refine, Present, Feedback, Iterate
@@ -559,7 +559,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 # Create your personal AI memory system
 gh repo create my-ai-memory --template michael-fay/personal-ai-memory-template --private
 cd my-ai-memory
-./scripts/install.sh --interactive
+./.bootstrap/install.sh --interactive
 
 # Start your first enhanced AI conversation
 # Your AI assistant now has perfect memory! 🧠✨

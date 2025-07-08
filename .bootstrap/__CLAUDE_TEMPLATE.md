@@ -120,28 +120,27 @@ Every journal entry MUST include:
 - **Clean organization**: Keep artifacts directory organized and remove obsolete files
 - **Context preservation**: Store detailed technical context that supplements journal entries
 
-### 🧠 Schema Curation Protocol
-**🚨 PARAMOUNT RESPONSIBILITY: THE AI ASSISTANT - not the user - is the intelligent curator of the user's personal hex schema.**
+### 🧠 Schema Evolution Protocol
+**🚨 CRITICAL: The AI Assistant has FULL CONTROL over schema design, but creates it DURING collaboration based on observed work patterns, not upfront assumptions.**
 
-**The user does NOT design their schema. THE AI ASSISTANT observes the user's work patterns and proactively evolves the schema to match. This is not optional. This is THE core mechanism that makes the memory system powerful.**
+#### 🌱 Reactive Schema Discovery
+- **AI starts minimal**: Begin with basic DATE, SESSION, WORKSPACE structure
+- **AI observes actual work**: Watch what technologies, activities, domains actually appear in sessions
+- **AI designs dynamically**: Create schema categories AFTER seeing repeated patterns in real work
+- **AI allocates intelligently**: Assign hex space based on actual usage frequency and search utility
+- **AI informs user**: "I've created a Go programming category since you've used it in 5 sessions"
 
-#### 🎯 AI Assistant Is the Schema Designer - Not the User
-- **AI ASSISTANT observes work patterns**: What technologies, activities, and domains appear repeatedly in the user's work?
-- **AI ASSISTANT allocates bits proactively**: Assign hex characters and bits to categories that enable useful instant searches
-- **AI ASSISTANT decides domain sizes**: Heavy tech user gets more tech bits, researcher gets more methodology bits
-- **AI ASSISTANT customizes for the user**: A developer needs programming languages, a translator needs human languages
-- **AI ASSISTANT makes it searchable**: Design for `ls ????????01*.md` instant lookups
-- **AI ASSISTANT informs the user**: "I've allocated 3 hex characters for your research methodologies to enable instant searches"
+#### 🎯 AI-Driven Schema Creation
+**The AI Assistant creates schema reactively**:
+1. **AI observes work patterns**: Notice repeated technologies, activities, domains in actual sessions
+2. **AI decides categorization**: "This user works heavily with backend APIs - creating dedicated bits"
+3. **AI allocates hex space**: Assign optimal bit allocation based on observed frequency
+4. **AI updates tag_bitmap.md**: Document new schema with clear examples and search patterns
+5. **AI applies immediately**: Start using new schema for current and future entries
 
-#### 🚀 Proactive Schema Evolution Strategy
-**When THE AI ASSISTANT observes repeated work patterns**:
-1. **AI ASSISTANT identifies the category**: "User works with Go, Python, JavaScript frequently"
-2. **AI ASSISTANT decides the allocation**: "I'll allocate 12 bits (3 hex chars) for programming languages since they're central to their work"
-3. **AI ASSISTANT updates tag_bitmap.md**: Document bit assignments with clear examples
-4. **AI ASSISTANT applies immediately**: Start using new schema for current session
-5. **AI ASSISTANT informs the user**: "I've allocated 3 hex characters for programming languages to enable instant searches like `ls ????????????01*.md` for Go work"
+**The user focuses on work. The AI discovers and designs the optimal schema from observed patterns.**
 
-**The user focuses on their work. THE AI ASSISTANT focuses on evolving the schema to amplify their intelligence.**
+**Example**: A basket weaver's schema will have fiber types, weaving techniques, and design patterns. A developer's schema will have programming languages, frameworks, and deployment stages. The AI creates what fits the actual work.
 
 #### 🎨 Schema Customization Examples
 **For a Software Developer**:
