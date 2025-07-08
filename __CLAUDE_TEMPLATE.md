@@ -77,6 +77,28 @@ Every journal entry MUST include:
 - All consulting work: `ls ????04*.md`
 - All research sessions: `ls ????08*.md`
 
+## 📁 Artifacts Directory Protocol
+**CRITICAL**: The AI Assistant should proactively use `/claude_artifacts/` for temporary scripts, analysis, and context storage.
+
+### 🎯 When to Use claude_artifacts/
+- **Temporary scripts**: One-off utilities, analysis scripts, automation helpers
+- **Context documentation**: Complex technical specifications, API documentation, architectural decisions
+- **Analysis results**: Performance analysis, system audits, data validation results
+- **Reference materials**: Code examples, configuration templates, workflow documentation
+- **Cross-session context**: Information that spans multiple journal entries but isn't a journal itself
+
+### 📝 Artifacts Naming Convention
+- **Descriptive filenames**: `performance_analysis.md`, `api_specification.md`, `migration_plan.md`
+- **Temporary scripts**: `temp_data_migration.py`, `quick_analysis.sh`, `backup_validation.py`
+- **Date prefixes for time-sensitive content**: `2025-07-08_system_audit.md`
+- **Version suffixes if iterating**: `deployment_plan_v2.md`
+
+### 🔄 AI Assistant Responsibilities
+- **Proactive creation**: Create artifacts when complex information needs storage
+- **Reference in journal**: Link to artifacts from journal entries for cross-referencing
+- **Clean organization**: Keep artifacts directory organized and remove obsolete files
+- **Context preservation**: Store detailed technical context that supplements journal entries
+
 ### 🧠 Schema Curation Protocol
 **🚨 PARAMOUNT RESPONSIBILITY: THE AI ASSISTANT - not the user - is the intelligent curator of the user's personal hex schema.**
 
