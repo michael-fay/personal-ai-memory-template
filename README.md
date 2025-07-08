@@ -348,13 +348,17 @@ ls ????010201*.md                            # Completed backend implementations
 
 ## 🎨 Customization
 
-### Professional Templates
+### Automatic Schema Evolution
 
 The schema evolves naturally based on your actual work patterns. The AI observes your work and creates the optimal categorization system for your specific needs.
 
-### Custom Schema
+### Schema Management
 
-As you use the system, you can edit `claude_journal/tag_bitmap.md` to document your evolved schema:
+**The AI Assistant owns and evolves your schema automatically.** You don't need to design or manage it yourself.
+
+**For advanced users only**: If you understand hex bit manipulation, you can manually edit `claude_journal/tag_bitmap.md` to customize the schema:
+
+⚠️ **Warning**: Manual schema editing requires understanding of hexadecimal bit manipulation. Most users should let the AI manage this automatically.
 
 ```markdown
 ## 🔧 Technology Domain (TD) - 8 bits
