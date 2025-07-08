@@ -3,11 +3,11 @@
 
 ### 🎯 Minimal Required Schema
 ```
-[DATE:16][SESSION:8][WORKSPACE:8][RESERVED:32]
-└─Timestamp─┘└─Seq─┘└─Context─┘└─Available─┘
+[DATE:16][SESSION:8][WORKSPACE:8][RESERVED:128]
+└─Timestamp─┘└─Seq─┘└─Context─┘└──Available──┘
 ```
 
-**40 hex characters**: `[DATE:4][SESSION:2][WORKSPACE:2][RESERVED:8].md`
+**40 hex characters**: `[DATE:4][SESSION:2][WORKSPACE:2][RESERVED:128].md`
 
 ---
 
@@ -54,11 +54,11 @@
 
 ---
 
-## 🏗️ Reserved Domain (32 bits) - AVAILABLE
+## 🏗️ Reserved Domain (128 bits) - AVAILABLE
 **Future organic growth and customization**
 
 ```
-32 bits = 8 hex characters = 00000000
+128 bits = 32 hex characters = 00000000000000000000000000000000
 ```
 
 **Customization Philosophy**: 
@@ -182,3 +182,37 @@ PHASE:    01=Discovery, 02=Strategy, 04=Implementation, 08=Delivery
 **Required Domains**: Date, Session, Workspace (24 bits used, 136 bits available)  
 **Next Steps**: Use minimal schema, observe patterns, expand organically  
 **Philosophy**: Start small, grow smart, let work patterns guide evolution
+
+---
+
+## 🚀 Advanced Schema Example (160-bit Architecture)
+
+**For users who need extensive categorization**:
+```
+[DATE:16][SESSION:8][WORKSPACE:8][LANG:8][TECH:8][DOMAIN:8][HARDWARE:8][ACTIVITY:8][STATUS:8][CONTEXT:8][RESERVED:72]
+```
+
+**40 hex characters**: `[DATE:4][SESSION:2][WORKSPACE:2][LANG:2][TECH:2][DOMAIN:2][HARDWARE:2][ACTIVITY:2][STATUS:2][CONTEXT:2][RESERVED:18].md`
+
+**Example Advanced Domains**:
+- **LANG (8 bits)**: Programming languages (01=Go, 02=Python, 04=JavaScript, 08=TypeScript)
+- **TECH (8 bits)**: Technology stacks (01=Backend, 02=Frontend, 04=Infrastructure, 08=Documentation)
+- **DOMAIN (8 bits)**: Business domains (01=ScienceTech, 02=PlantBiology, 04=IoT, 08=Breeding)
+- **HARDWARE (8 bits)**: Physical systems (01=Arduino, 02=RaspberryPi, 04=Sensors, 08=Microscopy)
+- **ACTIVITY (8 bits)**: Work activities (01=Design, 02=Implementation, 04=Debug, 08=Testing)
+- **STATUS (8 bits)**: Progress states (01=Complete, 02=Ongoing, 04=Blocked, 80=Breakthrough)
+- **CONTEXT (8 bits)**: Work context (01=Individual, 02=Collaborative, 04=Hyperfocus, 08=Research)
+
+**Advanced Search Examples**:
+```bash
+# All Go backend work
+ls ????????01*.md
+
+# All collaborative breakthroughs
+ls ??????????????????????80??02*.md
+
+# All IoT sensor work
+ls ????????????04??04*.md
+```
+
+**Evolution Strategy**: Start with minimal schema, expand domains as patterns emerge, always reserve bits for future growth.

@@ -124,48 +124,12 @@ def interactive_tag_builder():
         workspace_bits = "01"
     workspace_hex = workspace_bits.upper().zfill(2)
     
-    # Technology
-    print("\n🔧 Technology Domain:")
-    for bit, desc in schema['technology'].items():
-        print(f"   {bit:02X} - {desc}")
+    print("\n🏗️ Reserved bits available for future customization (128 bits)")
+    print("   Starting with minimal schema - expand based on your work patterns!")
     
-    tech_bits = input("Select technology bits: ").strip()
-    if not tech_bits:
-        tech_bits = "01"
-    tech_hex = tech_bits.upper().zfill(2)
-    
-    # Activity
-    print("\n⚡ Activity Domain:")
-    for bit, desc in schema['activity'].items():
-        print(f"   {bit:02X} - {desc}")
-    
-    activity_bits = input("Select activity bits: ").strip()
-    if not activity_bits:
-        activity_bits = "01"
-    activity_hex = activity_bits.upper().zfill(2)
-    
-    # Status
-    print("\n📊 Status Domain:")
-    for bit, desc in schema['status'].items():
-        print(f"   {bit:02X} - {desc}")
-    
-    status_bits = input("Select status bits: ").strip()
-    if not status_bits:
-        status_bits = "01"
-    status_hex = status_bits.upper().zfill(2)
-    
-    # Context
-    print("\n🎯 Context Domain:")
-    for bit, desc in schema['context'].items():
-        print(f"   {bit:02X} - {desc}")
-    
-    context_bits = input("Select context bits: ").strip()
-    if not context_bits:
-        context_bits = "01"
-    context_hex = context_bits.upper().zfill(2)
-    
-    # Build final tag
-    tag = f"{date_hex}{session_hex}{workspace_hex}{tech_hex}{activity_hex}{status_hex}{context_hex}"
+    # Build final tag (minimal format)
+    reserved_hex = "00000000000000000000000000000000"  # 32 hex chars = 128 bits
+    tag = f"{date_hex}{session_hex}{workspace_hex}{reserved_hex}"
     
     print("\n" + "="*50)
     print_success(f"🎉 Generated Tag: {tag}")
@@ -176,8 +140,8 @@ def interactive_tag_builder():
 
 def decode_tag(tag):
     """Decode a hex tag into its components"""
-    if len(tag) != 16:
-        print_error("Error: Tag must be exactly 16 hex characters")
+    if len(tag) != 40:
+        print_error("Error: Tag must be exactly 40 hex characters")
         return None
     
     try:
@@ -185,10 +149,7 @@ def decode_tag(tag):
         date_hex = tag[0:4]
         session_hex = tag[4:6]
         workspace_hex = tag[6:8]
-        tech_hex = tag[8:10]
-        activity_hex = tag[10:12]
-        status_hex = tag[12:14]
-        context_hex = tag[14:16]
+        reserved_hex = tag[8:40]
         
         # Convert date
         days_since_epoch = int(date_hex, 16)
@@ -202,19 +163,13 @@ def decode_tag(tag):
         print(f"📅 Date: {tag_date.strftime('%Y-%m-%d')} ({date_hex})")
         print(f"🔢 Session: {session_num} ({session_hex})")
         print(f"🏢 Workspace: {workspace_hex}")
-        print(f"🔧 Technology: {tech_hex}")
-        print(f"⚡ Activity: {activity_hex}")
-        print(f"📊 Status: {status_hex}")
-        print(f"🎯 Context: {context_hex}")
+        print(f"🏗️ Reserved: {reserved_hex} (Available for customization)")
         
         return {
             'date': tag_date,
             'session': session_num,
             'workspace': workspace_hex,
-            'technology': tech_hex,
-            'activity': activity_hex,
-            'status': status_hex,
-            'context': context_hex
+            'reserved': reserved_hex
         }
         
     except ValueError:
@@ -226,18 +181,14 @@ def generate_search_patterns():
     patterns = {
         "Today's entries": f"{calculate_date_hex()}*.md",
         "Recent entries": "*.md | head -10",
-        "All completed work": "*01*.md",
-        "All ongoing work": "*02*.md",
-        "All blocked work": "*04*.md",
-        "All breakthroughs": "*80*.md",
-        "All collaborative work": "*02.md",
-        "All individual work": "*01.md",
-        "All backend work": "??01*.md",
-        "All frontend work": "??02*.md",
-        "All infrastructure work": "??04*.md",
-        "All research work": "??20*.md",
-        "All debugging sessions": "????04*.md",
-        "All implementation work": "????02*.md"
+        "All work projects": "????01*.md",
+        "All personal projects": "????02*.md",
+        "All consulting work": "????04*.md",
+        "All research work": "????08*.md",
+        "All combined workspaces": "????0[357]*.md",
+        "This month's work": f"{calculate_date_hex()[:3]}?*.md",
+        "Session 1 entries": "????01*.md",
+        "Session 2 entries": "????02*.md"
     }
     
     print_header("🔍 Common Search Patterns")
@@ -285,7 +236,8 @@ def main():
         status_hex = (args.status or "01").upper().zfill(2)
         context_hex = (args.context or "01").upper().zfill(2)
         
-        tag = f"{date_hex}{session_hex}{workspace_hex}{tech_hex}{activity_hex}{status_hex}{context_hex}"
+        reserved_hex = "00000000000000000000000000000000"  # Default minimal format
+        tag = f"{date_hex}{session_hex}{workspace_hex}{reserved_hex}"
         
         print_success(f"Generated Tag: {tag}")
         print_success(f"Filename: {tag}.md")

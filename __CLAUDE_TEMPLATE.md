@@ -36,11 +36,11 @@ Every journal entry MUST include:
 - **Cross-references** (links to related journal entries and issues)
 
 ### ✅ Journal Format Validation Protocol
-**MANDATORY**: Every new journal entry MUST follow exact 16-character hex naming:
+**MANDATORY**: Every new journal entry MUST follow exact 40-character hex naming:
 
 #### Format Requirements
-- **Exact length**: 16 hex characters (0-9, A-F)
-- **Structure**: `[DATE:4][SESSION:2][WS:2][TD:2][AD:2][SD:2][CD:2]`
+- **Exact length**: 40 hex characters (0-9, A-F)
+- **Structure**: `[DATE:4][SESSION:2][WORKSPACE:2][RESERVED:32]` (minimal) or advanced with more domains
 - **Case**: Uppercase hex only
 - **Extension**: `.md` only
 
@@ -50,29 +50,32 @@ Every journal entry MUST include:
 - **Regular checks**: Periodically validate entire journal directory
 
 #### Error Prevention
-- **Never create**: 12-character filenames (missing WS field)
+- **Never create**: 16-character filenames (old format)
 - **Never use**: lowercase hex characters
-- **Always verify**: Length and hex format before creating
+- **Always verify**: 40-character length and hex format before creating
 - **Implement validation**: Create appropriate checks for your environment
 
 ### 🏷️ Hex Indexing and Tagging System
-**File Naming Protocol**: `[DATE:4][SESSION:2][WS:2][TD:2][AD:2][SD:2][CD:2].md`
+**File Naming Protocol**: `[DATE:4][SESSION:2][WORKSPACE:2][RESERVED:32].md`
 
-**64-Bit Hex Tag Structure**:
+**160-Bit Hex Tag Structure (Conservative)**:
 - **DATE (16 bits)**: Days since 2025-01-01 (4 hex digits)
 - **SESSION (8 bits)**: Daily session number (2 hex digits)
-- **WS (8 bits)**: Workspace Domain - What project/context you're working in
-- **TD (8 bits)**: Technology Domain - What systems/technologies involved
-- **AD (8 bits)**: Activity Domain - What type of work performed  
-- **SD (8 bits)**: Status Domain - Current state and outcomes
-- **CD (8 bits)**: Context Domain - Scope, collaboration, special conditions
+- **WORKSPACE (8 bits)**: Project/context classification (2 hex digits)
+- **RESERVED (128 bits)**: Future organic growth (32 hex digits)
 
 **Example Filenames**:
-- `00BB010101020101.md` → July 7, 2025, Session 1, Work Project, Backend Implementation Complete, Individual
-- `00BC020202082020.md` → July 8, 2025, Session 2, Personal, Frontend Testing Generation, Research
-- `00BC030404048001.md` → July 8, 2025, Session 3, Consulting, Infrastructure Debug Breakthrough, Individual
+- `00BC010100000000000000000000000000000000.md` → July 8, 2025, Session 1, Work Project
+- `00BC020200000000000000000000000000000000.md` → July 8, 2025, Session 2, Personal Project
+- `00BC030400000000000000000000000000000000.md` → July 8, 2025, Session 3, Consulting Project
 
 **Tag Schema Reference**: Always check `./claude_journal/tag_bitmap.md` for current bit assignments and search patterns
+
+**Search Examples**:
+- All work today: `ls 00BC??01*.md`
+- All personal projects: `ls ????02*.md`
+- All consulting work: `ls ????04*.md`
+- All research sessions: `ls ????08*.md`
 
 ### 🧠 Schema Curation Protocol
 **🚨 PARAMOUNT RESPONSIBILITY: THE AI ASSISTANT - not the user - is the intelligent curator of the user's personal hex schema.**
@@ -114,15 +117,15 @@ Every journal entry MUST include:
 - **Domains are not fixed to 8 bits**: Need 12 categories? Use 3 hex characters (12 bits). Need 4? Use 1 hex character (4 bits).
 - **Allocate bits to match usage patterns**: Heavy technology user might want 16 bits (4 hex) for tech, light user might want 4 bits (1 hex)
 - **Start conservative**: Begin with small allocations, expand when you discover clear patterns
-- **Total flexibility**: The 32 reserved bits can be divided however makes sense for your work
+- **Total flexibility**: The 128 reserved bits can be divided however makes sense for your work
 - **Prioritize instant search**: Ask "Will this enable useful `ls` pattern matching?"
 - **Document evolution**: Always update tag_bitmap.md when adding new domains or expanding existing ones
 
 #### 💡 Domain Size Examples
-- **Light user**: `[TECH:4][ACTIVITY:4][STATUS:4][CONTEXT:4]` (4 hex chars total)
-- **Balanced user**: `[TECH:8][ACTIVITY:8][STATUS:8][CONTEXT:8]` (8 hex chars total)  
-- **Power user**: `[LANG:8][TECH:12][DOMAIN:8][ACTIVITY:4]` (8 hex chars total)
-- **Specialist**: `[RESEARCH_METHOD:16][DATA_TYPE:8][ANALYSIS:8]` (8 hex chars total)
+- **Light user**: `[TECH:4][ACTIVITY:4][STATUS:4][CONTEXT:4][RESERVED:112]` (32 hex chars total)
+- **Balanced user**: `[TECH:8][ACTIVITY:8][STATUS:8][CONTEXT:8][RESERVED:96]` (32 hex chars total)  
+- **Power user**: `[LANG:8][TECH:12][DOMAIN:8][ACTIVITY:4][RESERVED:96]` (32 hex chars total)
+- **Specialist**: `[RESEARCH_METHOD:16][DATA_TYPE:8][ANALYSIS:8][RESERVED:96]` (32 hex chars total)
 
 #### 💡 Smart Default Domains
 **Suggested universal starting categories**:

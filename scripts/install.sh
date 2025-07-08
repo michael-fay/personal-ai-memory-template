@@ -280,9 +280,9 @@ fi
 
 DAYS_SINCE_EPOCH=$(( (CURRENT_SECONDS - EPOCH_SECONDS) / 86400 ))
 DATE_HEX=$(printf "%04X" $DAYS_SINCE_EPOCH)
-# Format: [DATE:4][SESSION:2][WS:2][TD:2][AD:2][SD:2][CD:2] = 16 chars
-# DATE(4) + SESSION(2) + WORKSPACE(2) + TECH(2) + ACTIVITY(2) + STATUS(2) + CONTEXT(2) = 16
-EXAMPLE_FILENAME="${DATE_HEX}010140010101.md"
+# Format: [DATE:4][SESSION:2][WORKSPACE:2][RESERVED:32] = 40 chars
+# DATE(4) + SESSION(2) + WORKSPACE(2) + RESERVED(32) = 40
+EXAMPLE_FILENAME="${DATE_HEX}010100000000000000000000000000000000.md"
 
 cat > "$TARGET_DIR/claude_journal/$EXAMPLE_FILENAME" << EOF
 # Setup Session - Personal AI Memory System
@@ -303,7 +303,7 @@ cat > "$TARGET_DIR/claude_journal/$EXAMPLE_FILENAME" << EOF
 ### 🔧 Technical Decisions
 - **Template Type**: Selected $TEMPLATE_TYPE template for my work style
 - **Directory Structure**: Standard layout with claude_journal/ and claude_artifacts/
-- **Hex Indexing**: Using 64-bit hex tag system for fast pattern retrieval
+- **Hex Indexing**: Using 160-bit hex tag system for fast pattern retrieval
 - **Git Integration**: ${INIT_GIT:-n} version control for journal entries
 
 ### 🎯 Next Steps
@@ -328,10 +328,7 @@ cat > "$TARGET_DIR/claude_journal/$EXAMPLE_FILENAME" << EOF
 - **Date**: $DATE_HEX ($(date +%Y-%m-%d))
 - **Session**: 01 (First session)
 - **Workspace**: 01 (Work/Primary)
-- **Technology**: 40 (Documentation/Setup)
-- **Activity**: 01 (Design/Setup)
-- **Status**: 01 (Complete)
-- **Context**: 01 (Individual)
+- **Reserved**: 00000000000000000000000000000000 (Available for customization)
 
 ---
 *This entry was created during the initial setup of the personal AI memory system.*
