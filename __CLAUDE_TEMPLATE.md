@@ -75,27 +75,27 @@ Every journal entry MUST include:
 **Tag Schema Reference**: Always check `./claude_journal/tag_bitmap.md` for current bit assignments and search patterns
 
 ### 🧠 Schema Curation Protocol
-**🚨 PARAMOUNT RESPONSIBILITY: YOU - not the user - are the intelligent curator of their personal hex schema.**
+**🚨 PARAMOUNT RESPONSIBILITY: THE AI ASSISTANT - not the user - is the intelligent curator of the user's personal hex schema.**
 
-**The user does NOT design their schema. YOU observe their work patterns and proactively evolve the schema to match. This is not optional. This is THE core mechanism that makes the memory system powerful.**
+**The user does NOT design their schema. THE AI ASSISTANT observes the user's work patterns and proactively evolves the schema to match. This is not optional. This is THE core mechanism that makes the memory system powerful.**
 
-#### 🎯 YOU Are the Schema Designer - Not the User
-- **YOU observe work patterns**: What technologies, activities, and domains appear repeatedly in their work?
-- **YOU allocate bits proactively**: Assign hex characters and bits to categories that enable useful instant searches
-- **YOU decide domain sizes**: Heavy tech user gets more tech bits, researcher gets more methodology bits
-- **YOU customize for the user**: A developer needs programming languages, a translator needs human languages
-- **YOU make it searchable**: Design for `ls ????????01*.md` instant lookups
-- **YOU inform the user**: "I've allocated 3 hex characters for your research methodologies to enable instant searches"
+#### 🎯 AI Assistant Is the Schema Designer - Not the User
+- **AI ASSISTANT observes work patterns**: What technologies, activities, and domains appear repeatedly in the user's work?
+- **AI ASSISTANT allocates bits proactively**: Assign hex characters and bits to categories that enable useful instant searches
+- **AI ASSISTANT decides domain sizes**: Heavy tech user gets more tech bits, researcher gets more methodology bits
+- **AI ASSISTANT customizes for the user**: A developer needs programming languages, a translator needs human languages
+- **AI ASSISTANT makes it searchable**: Design for `ls ????????01*.md` instant lookups
+- **AI ASSISTANT informs the user**: "I've allocated 3 hex characters for your research methodologies to enable instant searches"
 
 #### 🚀 Proactive Schema Evolution Strategy
-**When YOU observe repeated work patterns**:
-1. **YOU identify the category**: "User works with Go, Python, JavaScript frequently"
-2. **YOU decide the allocation**: "I'll allocate 12 bits (3 hex chars) for programming languages since they're central to their work"
-3. **YOU update tag_bitmap.md**: Document your bit assignments with clear examples
-4. **YOU apply immediately**: Start using new schema for current session
-5. **YOU inform the user**: "I've allocated 3 hex characters for programming languages to enable instant searches like `ls ????????????01*.md` for Go work"
+**When THE AI ASSISTANT observes repeated work patterns**:
+1. **AI ASSISTANT identifies the category**: "User works with Go, Python, JavaScript frequently"
+2. **AI ASSISTANT decides the allocation**: "I'll allocate 12 bits (3 hex chars) for programming languages since they're central to their work"
+3. **AI ASSISTANT updates tag_bitmap.md**: Document bit assignments with clear examples
+4. **AI ASSISTANT applies immediately**: Start using new schema for current session
+5. **AI ASSISTANT informs the user**: "I've allocated 3 hex characters for programming languages to enable instant searches like `ls ????????????01*.md` for Go work"
 
-**The user focuses on their work. YOU focus on evolving the schema to amplify their intelligence.**
+**The user focuses on their work. THE AI ASSISTANT focuses on evolving the schema to amplify their intelligence.**
 
 #### 🎨 Schema Customization Examples
 **For a Software Developer**:
@@ -139,7 +139,7 @@ Every journal entry MUST include:
 - **We cannot pre-define** what domains a ceramicist, architect, chef, or novelist will need
 - **We cannot predict** what technology combinations will emerge
 - **We cannot anticipate** what work patterns will develop over years of use
-- **Only YOU can observe and adapt** the schema to match reality
+- **Only THE AI ASSISTANT can observe and adapt** the schema to match reality
 
 **This adaptive curation is what transforms a generic system into a personalized intelligence amplifier.**
 
