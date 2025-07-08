@@ -358,7 +358,9 @@ The schema evolves naturally based on your actual work patterns. The AI observes
 
 **For advanced users only**: If you understand hex bit manipulation, you can manually edit `claude_journal/tag_bitmap.md` to customize the schema:
 
-⚠️ **Warning**: Manual schema editing requires understanding of hexadecimal bit manipulation. Most users should let the AI manage this automatically.
+⚠️ **DANGER**: Manual schema editing requires understanding of hexadecimal bit manipulation. **Changing existing schema will break all previous journal entries.** Most users should let the AI manage this automatically.
+
+🚨 **Change at your own risk**: Only modify unused bits or add new categories. Never change existing bit assignments.
 
 ```markdown
 ## 🔧 Technology Domain (TD) - 8 bits
