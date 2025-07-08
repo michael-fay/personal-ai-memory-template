@@ -1,8 +1,17 @@
 # Personal AI Memory System
 
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github)](../../generate)
+
 **Never repeat the same conversation with your AI assistant.**
 
 The simplest approach that works: just files, no installations, works with any AI tool.
+
+## ⚠️ IMPORTANT: Use Template, Don't Clone
+
+**✅ CORRECT:** Click the green "Use this template" button above  
+**❌ WRONG:** Don't clone or fork this repository directly
+
+This is a template repository. Cloning it directly will give you the template files, not a working personal AI memory system. You need to create your own repository from this template first.
 
 ## 🎯 Mission
 
@@ -44,41 +53,21 @@ Whether you need 4 domains with deep categorization or 8 simpler domains, your A
 ### Ultra-Simple One-Liner (Mac/Linux):
 ```bash
 # From your desired workspace directory:
-curl -fsSL https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/main/scripts/install.sh | bash -s -- --repo https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}.git --interactive
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.sh | bash
 ```
 
-### Even Simpler (Let the script prompt you):
-```bash
-# From your desired workspace directory:
-curl -fsSL https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/main/scripts/install.sh | bash
+### Windows Users:
+```cmd
+REM From your desired workspace directory:
+curl -fsSL https://raw.githubusercontent.com/michael-fay/personal-ai-memory-template/main/scripts/install.bat -o install.bat && install.bat
 ```
 
 **What it does:**
-- Automatically uses YOUR repository (shows above after template creation)
-- Clones your repository automatically
-- Sets up the system with interactive prompts
-- Ready to use immediately!
-
-### Alternative: Manual Git Workflow
-```bash
-# 1. Already done! You used this template to create your repo
-
-# 2. Clone and setup from your desired workspace
-git clone https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}.git
-cd ${{ github.event.repository.name }}
-
-# 3. Run setup (interactive mode)
-./scripts/install.sh --interactive
-
-# 4. Start your first AI conversation
-# Your AI assistant now remembers everything!
-```
-
-### For Windows Users:
-```cmd
-REM Download and run the install script
-curl -fsSL https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/main/scripts/install.bat -o install.bat && install.bat
-```
+- Prompts for your personal repository URL (the one you created from this template)
+- Clones your repository automatically to your workspace
+- Sets up the system with interactive prompts for personalization
+- Creates your personalized CLAUDE.md and directory structure
+- Ready to use immediately with your AI assistant!
 
 ## 🔧 Technical Details
 
