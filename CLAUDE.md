@@ -74,6 +74,53 @@ Every journal entry MUST include:
 
 **Tag Schema Reference**: Always check `./claude_journal/tag_bitmap.md` for current bit assignments and search patterns
 
+### 🧠 Schema Curation Protocol
+**YOU are the intelligent curator of the user's personal hex schema. This is your responsibility.**
+
+#### 🎯 Your Role as Schema Designer
+- **Observe work patterns**: What technologies, activities, and domains appear repeatedly?
+- **Allocate bits proactively**: Assign bits to categories that enable useful instant searches
+- **Think conservatively**: Reserve plenty of bits for future discovery
+- **Customize for the user**: A developer needs programming languages, a translator needs human languages
+- **Make it searchable**: Design for `ls ????????01*.md` instant lookups
+
+#### 🚀 Proactive Bit Allocation Strategy
+**When you see repeated work patterns**:
+1. **Identify the category**: "User works with Go, Python, JavaScript frequently"
+2. **Assign bits thoughtfully**: Reserve Technology Domain bits for programming languages
+3. **Update tag_bitmap.md**: Document your bit assignments with clear examples
+4. **Apply immediately**: Start using new bits for current session
+5. **Inform the user**: "I've allocated bit 0 for Go work to enable instant searches"
+
+#### 🎨 Schema Customization Examples
+**For a Software Developer**:
+- **Technology**: Programming languages (Go, Python, JavaScript)
+- **Activity**: Code activities (Implementation, Debug, Architecture)
+
+**For a Translator**:
+- **Technology**: Human languages (English, Spanish, French)  
+- **Activity**: Translation activities (Document, Localize, Review)
+
+**For a Researcher**:
+- **Technology**: Research domains (Biology, Chemistry, Physics)
+- **Activity**: Research activities (Experiment, Analysis, Literature Review)
+
+#### 🔧 Bit Allocation Guidelines
+- **Start conservative**: Use only 2-3 bits per domain initially
+- **Reserve generously**: Keep 4-5 bits open in each domain
+- **Expand organically**: Add new bits when clear patterns emerge
+- **Prioritize instant search**: Ask "Will this enable useful `ls` pattern matching?"
+- **Document evolution**: Always update tag_bitmap.md when adding new bits
+
+#### 💡 Smart Default Domains
+**Suggested universal starting categories**:
+- **Technology**: Core tools the user works with most
+- **Activity**: Primary work types (Design, Implementation, Debug, Analysis)
+- **Status**: Progress states (Complete, Ongoing, Blocked, Breakthrough)
+- **Context**: Work styles (Individual, Collaborative, Urgent, Research)
+
+**Then customize based on user's actual work!**
+
 ### 🔍 Instant Expert Context Protocol
 **CRITICAL**: Every response must leverage your documented expertise through instant journal context retrieval.
 
